@@ -5,6 +5,7 @@
 #include <QVideoFrame>
 
 extern QString settings_images_dir;
+extern QString settings_output_dir;
 
 //Init
 MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow){
@@ -23,8 +24,10 @@ MainWindow::~MainWindow(){
 //Convert
 void MainWindow::on_actionConvertAction_triggered(){
     //Export
-    QString file_dir = QFileDialog::getExistingDirectory(this, tr("Choose directory"), "./", QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+    QString file_dir = QFileDialog::getExistingDirectory(this, tr("Choose directory"), settings_output_dir, QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
     if(file_dir.length() > 0){
+        settings_output_dir = file_dir;
+        Settings_Store();
         if(ui->checkBox_CH->isChecked()){
             Export_CH(&file_dir, Export_Data());
         }

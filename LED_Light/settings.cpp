@@ -5,6 +5,7 @@
 #include <QFileInfo>
 
 QString settings_images_dir;
+QString settings_output_dir;
 
 void MainWindow::Settings_Init(){
     //If file does not exist, create empty
@@ -37,6 +38,7 @@ void MainWindow::Settings_Init(){
     int output_pulses = settings.value("stop-pulses", ui->spinBox_Stop_Pulses->value()).toInt();
     bool output_ch = settings.value("generate-ch-files", ui->checkBox_CH->isChecked()).toBool();
     bool output_bin = settings.value("generate-bin-file", ui->checkBox_Bin->isChecked()).toBool();
+    settings_output_dir = settings.value("dir", "").toString();
     settings.endGroup();
 
     //Apply settings
@@ -75,5 +77,6 @@ void MainWindow::Settings_Store(){
     settings.setValue("stop-pulses", ui->spinBox_Stop_Pulses->value());
     settings.setValue("generate-ch-files", ui->checkBox_CH->isChecked());
     settings.setValue("generate-bin-file", ui->checkBox_Bin->isChecked());
+    settings.setValue("dir", settings_output_dir);
     settings.endGroup();
 }
