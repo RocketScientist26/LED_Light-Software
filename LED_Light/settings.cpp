@@ -38,6 +38,7 @@ void MainWindow::Settings_Init(){
     int output_pulses = settings.value("stop-pulses", ui->spinBox_Stop_Pulses->value()).toInt();
     bool output_ch = settings.value("generate-ch-files", ui->checkBox_CH->isChecked()).toBool();
     bool output_bin = settings.value("generate-bin-file", ui->checkBox_Bin->isChecked()).toBool();
+    int byte_order = settings.value("byte-order", ui->checkBox_Bin->isChecked()).toInt();
     settings_output_dir = settings.value("dir", "").toString();
     settings.endGroup();
 
@@ -53,6 +54,7 @@ void MainWindow::Settings_Init(){
     ui->spinBox_Stop_Pulses->setValue(output_pulses);
     ui->checkBox_CH->setChecked(output_ch);
     ui->checkBox_Bin->setChecked(output_bin);
+    ui->comboBox_Byte_Order->setCurrentIndex(byte_order);
 }
 void MainWindow::Settings_Store(){
     QSettings settings("settings.ini", QSettings::IniFormat);
@@ -75,6 +77,7 @@ void MainWindow::Settings_Store(){
     settings.setValue("zero", ui->spinBox_Zero->value());
     settings.setValue("one", ui->spinBox_One->value());
     settings.setValue("stop-pulses", ui->spinBox_Stop_Pulses->value());
+    settings.setValue("byte-order", ui->comboBox_Byte_Order->currentIndex());
     settings.setValue("generate-ch-files", ui->checkBox_CH->isChecked());
     settings.setValue("generate-bin-file", ui->checkBox_Bin->isChecked());
     settings.setValue("dir", settings_output_dir);

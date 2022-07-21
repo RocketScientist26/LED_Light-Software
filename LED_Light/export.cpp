@@ -24,8 +24,13 @@ QByteArray MainWindow::Export_Data(){
                         w = 0;
                         while(w != image[c].width()){
                             if(ui->tableWidget->item(h,w)->background().color() != table_selected_color){
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                if(!ui->comboBox_Byte_Order->currentIndex()){
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                }else{
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                }
                                 bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).blue()));
                             }
                             w++;
@@ -35,8 +40,13 @@ QByteArray MainWindow::Export_Data(){
                         while(w != 0){
                             w--;
                             if(ui->tableWidget->item(h,w)->background().color() != table_selected_color){
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                if(!ui->comboBox_Byte_Order->currentIndex()){
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                }else{
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                }
                                 bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).blue()));
                             }
                         }
@@ -54,8 +64,13 @@ QByteArray MainWindow::Export_Data(){
                         while(w != 0){
                             w--;
                             if(ui->tableWidget->item(h,w)->background().color() != table_selected_color){
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                if(!ui->comboBox_Byte_Order->currentIndex()){
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                }else{
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                }
                                 bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).blue()));
                             }
                         }
@@ -63,8 +78,13 @@ QByteArray MainWindow::Export_Data(){
                         w = 0;
                         while(w != image[c].width()){
                             if(ui->tableWidget->item(h,w)->background().color() != table_selected_color){
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                if(!ui->comboBox_Byte_Order->currentIndex()){
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                }else{
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                }
                                 bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).blue()));
                             }
                             w++;
@@ -83,8 +103,13 @@ QByteArray MainWindow::Export_Data(){
                         w = 0;
                         while(w != image[c].width()){
                             if(ui->tableWidget->item(h,w)->background().color() != table_selected_color){
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                if(!ui->comboBox_Byte_Order->currentIndex()){
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                }else{
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                }
                                 bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).blue()));
                             }
                             w++;
@@ -94,8 +119,13 @@ QByteArray MainWindow::Export_Data(){
                         while(w != 0){
                             w--;
                             if(ui->tableWidget->item(h,w)->background().color() != table_selected_color){
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                if(!ui->comboBox_Byte_Order->currentIndex()){
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                }else{
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                }
                                 bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).blue()));
                             }
                         }
@@ -113,8 +143,13 @@ QByteArray MainWindow::Export_Data(){
                         while(w != 0){
                             w--;
                             if(ui->tableWidget->item(h,w)->background().color() != table_selected_color){
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                if(!ui->comboBox_Byte_Order->currentIndex()){
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                }else{
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                }
                                 bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).blue()));
                             }
                         }
@@ -122,8 +157,13 @@ QByteArray MainWindow::Export_Data(){
                         w = 0;
                         while(w != image[c].width()){
                             if(ui->tableWidget->item(h,w)->background().color() != table_selected_color){
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                if(!ui->comboBox_Byte_Order->currentIndex()){
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                }else{
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                }
                                 bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).blue()));
                             }
                             w++;
@@ -140,8 +180,13 @@ QByteArray MainWindow::Export_Data(){
                         h = 0;
                         while(h != image[c].height()){
                             if(ui->tableWidget->item(h,w)->background().color() != table_selected_color){
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                if(!ui->comboBox_Byte_Order->currentIndex()){
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                }else{
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                }
                                 bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).blue()));
                             }
                             h++;
@@ -151,8 +196,13 @@ QByteArray MainWindow::Export_Data(){
                         while(h != 0){
                             h--;
                             if(ui->tableWidget->item(h,w)->background().color() != table_selected_color){
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                if(!ui->comboBox_Byte_Order->currentIndex()){
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                }else{
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                }
                                 bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).blue()));
                             }
                         }
@@ -170,8 +220,13 @@ QByteArray MainWindow::Export_Data(){
                         while(h != 0){
                             h--;
                             if(ui->tableWidget->item(h,w)->background().color() != table_selected_color){
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                if(!ui->comboBox_Byte_Order->currentIndex()){
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                }else{
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                }
                                 bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).blue()));
                             }
                         }
@@ -179,8 +234,13 @@ QByteArray MainWindow::Export_Data(){
                         h = 0;
                         while(h != image[c].height()){
                             if(ui->tableWidget->item(h,w)->background().color() != table_selected_color){
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                if(!ui->comboBox_Byte_Order->currentIndex()){
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                }else{
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                }
                                 bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).blue()));
                             }
                             h++;
@@ -199,8 +259,13 @@ QByteArray MainWindow::Export_Data(){
                         h = 0;
                         while(h != image[c].height()){
                             if(ui->tableWidget->item(h,w)->background().color() != table_selected_color){
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                if(!ui->comboBox_Byte_Order->currentIndex()){
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                }else{
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                }
                                 bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).blue()));
                             }
                             h++;
@@ -210,8 +275,13 @@ QByteArray MainWindow::Export_Data(){
                         while(h != 0){
                             h--;
                             if(ui->tableWidget->item(h,w)->background().color() != table_selected_color){
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                if(!ui->comboBox_Byte_Order->currentIndex()){
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                }else{
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                }
                                 bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).blue()));
                             }
                         }
@@ -229,8 +299,13 @@ QByteArray MainWindow::Export_Data(){
                         while(h != 0){
                             h--;
                             if(ui->tableWidget->item(h,w)->background().color() != table_selected_color){
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                if(!ui->comboBox_Byte_Order->currentIndex()){
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                }else{
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                }
                                 bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).blue()));
                             }
                         }
@@ -238,8 +313,13 @@ QByteArray MainWindow::Export_Data(){
                         h = 0;
                         while(h != image[c].height()){
                             if(ui->tableWidget->item(h,w)->background().color() != table_selected_color){
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
-                                bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                if(!ui->comboBox_Byte_Order->currentIndex()){
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                }else{
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).red()));
+                                    bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).green()));
+                                }
                                 bdata.append(Export_Reverse_Bits((uint8_t)image[c].pixelColor(w,h).blue()));
                             }
                             h++;

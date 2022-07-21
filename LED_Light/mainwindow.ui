@@ -235,7 +235,7 @@
     <widget class="QCheckBox" name="checkBox_CH">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>160</x>
        <y>51</y>
        <width>121</width>
        <height>20</height>
@@ -296,7 +296,7 @@
     <widget class="QCheckBox" name="checkBox_Bin">
      <property name="geometry">
       <rect>
-       <x>140</x>
+       <x>280</x>
        <y>51</y>
        <width>131</width>
        <height>20</height>
@@ -368,6 +368,39 @@
      </property>
      <property name="text">
       <string>Stop pulses:</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_Byte_Order">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>50</y>
+       <width>51</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>GRB</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>RGB</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_Byte_Order">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>50</y>
+       <width>61</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Byte order:</string>
      </property>
     </widget>
    </widget>
@@ -844,6 +877,22 @@
     <hint type="sourcelabel">
      <x>205</x>
      <y>71</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBox_Byte_Order</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>actionClockZeroOneStopSpinBoxChangedAction</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>375</x>
+     <y>510</y>
     </hint>
     <hint type="destinationlabel">
      <x>-1</x>
