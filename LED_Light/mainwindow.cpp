@@ -4,9 +4,6 @@
 #include <QImage>
 #include <QVideoFrame>
 
-extern QString settings_images_dir;
-extern QString settings_output_dir;
-
 //Init
 MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow){
     this->setFixedSize(849, 561);

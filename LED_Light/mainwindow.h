@@ -38,6 +38,8 @@ private:
     QImage image[MAX_IMAGE_COUNT];
     QColor table_normal_color = QColor(QColor::fromRgb(TABLE_NORMAL_COLOR));
     QColor table_selected_color = QColor(QColor::fromRgb(TABLE_SELECTED_COLOR));
+    QString settings_images_dir;
+    QString settings_output_dir;
 
     uint32_t CRC32_Get(uint32_t *data, uint32_t length);
 

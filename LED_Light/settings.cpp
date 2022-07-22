@@ -4,9 +4,6 @@
 #include <QFile>
 #include <QFileInfo>
 
-QString settings_images_dir;
-QString settings_output_dir;
-
 void MainWindow::Settings_Init(){
     //If file does not exist, create empty
     if(!QFile("settings.ini").exists()){
