@@ -41,6 +41,7 @@ private:
 
     uint32_t CRC32_Get(uint32_t *data, uint32_t length);
 
+    QByteArray Export_Get_Pixel(int image_n, int x, int y);
     uint8_t Export_Reverse_Bits(uint8_t b);
     QByteArray Export_Data();
     void Export_CH(QString *file_dir, const QByteArray &data);

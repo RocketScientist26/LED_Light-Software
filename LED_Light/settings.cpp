@@ -38,7 +38,7 @@ void MainWindow::Settings_Init(){
     int output_pulses = settings.value("stop-pulses", ui->spinBox_Stop_Pulses->value()).toInt();
     bool output_ch = settings.value("generate-ch-files", ui->checkBox_CH->isChecked()).toBool();
     bool output_bin = settings.value("generate-bin-file", ui->checkBox_Bin->isChecked()).toBool();
-    int byte_order = settings.value("byte-order", ui->checkBox_Bin->isChecked()).toInt();
+    int byte_order = settings.value("byte-order", ui->comboBox_Byte_Order->currentIndex()).toInt();
     settings_output_dir = settings.value("dir", "").toString();
     settings.endGroup();
 

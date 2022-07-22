@@ -493,48 +493,88 @@
       <rect>
        <x>108</x>
        <y>390</y>
-       <width>171</width>
+       <width>211</width>
        <height>22</height>
       </rect>
      </property>
      <item>
       <property name="text">
-       <string>Left to Right / Top to Bottom</string>
+       <string>Left to Right / Top to Bottom / Zig-zag</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Right to Left / Top to Bottom</string>
+       <string>Right to Left / Top to Bottom / Zig-zag</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Left to Right / Bottom to Top</string>
+       <string>Left to Right / Bottom to Top / Zig-zag</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Right to Left / Bottom to Top</string>
+       <string>Right to Left / Bottom to Top / Zig-zag</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Top to Bottom / Left to Right</string>
+       <string>Top to Bottom / Left to Right / Zig-zag</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Bottom to Top / Left to Right</string>
+       <string>Bottom to Top / Left to Right / Zig-zag</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Top to Bottom / Right to Left</string>
+       <string>Top to Bottom / Right to Left / Zig-zag</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Bottom to Top / Right to Left</string>
+       <string>Bottom to Top / Right to Left / Zig-zag</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Left to Right / Top to Bottom / Lines</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Right to Left / Top to Bottom / Lines</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Left to Right / Bottom to Top / Lines</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Right to Left / Bottom to Top / Lines</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Top to Bottom / Left to Right / Lines</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Bottom to Top / Left to Right / Lines</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Top to Bottom / Right to Left / Lines</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Bottom to Top / Right to Left / Lines</string>
       </property>
      </item>
     </widget>
