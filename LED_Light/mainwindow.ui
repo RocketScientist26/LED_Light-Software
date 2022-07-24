@@ -660,6 +660,7 @@
   <tabstop>spinBox_Zero</tabstop>
   <tabstop>spinBox_One</tabstop>
   <tabstop>spinBox_Stop_Pulses</tabstop>
+  <tabstop>comboBox_Byte_Order</tabstop>
   <tabstop>checkBox_CH</tabstop>
   <tabstop>checkBox_Bin</tabstop>
   <tabstop>pushButton_Convert</tabstop>
