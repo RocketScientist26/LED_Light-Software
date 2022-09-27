@@ -1,5 +1,4 @@
 #include "mainwindow.h"
-#include <QByteArray>
 
 uint32_t MainWindow::CRC32_Get(uint32_t *data, uint32_t length){
     uint32_t crc = 0xFFFFFFFF;
