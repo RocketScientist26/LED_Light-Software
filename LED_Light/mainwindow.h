@@ -2,6 +2,13 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QFileDialog>
+#include <QImage>
+#include <QVideoFrame>
+#include <QFile>
+#include <QFileInfo>
+#include "config.h"
+#include "crc32.h"
 
 #define EXPORT_ARRAY_BYTES_PER_LINE 15
 #define MAX_IMAGE_COUNT 2000
@@ -10,11 +17,7 @@
 #define TABLE_NORMAL_COLOR 100, 100, 100
 #define TABLE_SELECTED_COLOR 255, 0, 0
 
-QT_BEGIN_NAMESPACE
-namespace Ui{
-    class MainWindow;
-}
-QT_END_NAMESPACE
+namespace Ui{ class MainWindow; }
 
 class MainWindow : public QMainWindow{
     Q_OBJECT
@@ -23,23 +26,24 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_actionConvertAction_triggered();
-    void on_actionBrowseAction_triggered();
-    void on_actionDelAction_triggered();
-    void on_actionTableCellChangedAction_triggered();
-    void on_actionTableResizeAction_triggered();
-    void on_actionPulseChangedAction_triggered();
-    void on_actionPointSizeChangedAction_triggered();
-    void on_actionCheckBoxGenerateAction_triggered();
-    void on_actionClockZeroOneStopSpinBoxChangedAction_triggered();
-    void on_actionClearAction_triggered();
+    void on_actionConvert_triggered();
+    void on_actionBrowse_triggered();
+    void on_actionDel_triggered();
+    void on_actionTableCellChanged_triggered();
+    void on_actionTableResize_triggered();
+    void on_actionPulseChanged_triggered();
+    void on_actionPointSizeChanged_triggered();
+    void on_actionCheckBoxGenerate_triggered();
+    void on_actionClockZeroOneStopSpinBoxChanged_triggered();
+    void on_actionClear_triggered();
 
 private:
+    Config *config;
+
+
     QImage image[MAX_IMAGE_COUNT];
     QColor table_normal_color = QColor(QColor::fromRgb(TABLE_NORMAL_COLOR));
     QColor table_selected_color = QColor(QColor::fromRgb(TABLE_SELECTED_COLOR));
-    QString settings_images_dir;
-    QString settings_output_dir;
 
     uint32_t CRC32_Get(uint32_t *data, uint32_t length);
 
@@ -48,9 +52,6 @@ private:
     QByteArray Export_Data();
     void Export_CH(QString *file_dir, const QByteArray &data);
     void Export_Bin(QString *file_dir, const QByteArray &data);
-
-    void Settings_Init();
-    void Settings_Store();
 
     void UIEnableConditional();
     Ui::MainWindow *ui;

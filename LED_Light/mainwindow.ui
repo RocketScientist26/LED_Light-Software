@@ -593,57 +593,84 @@
     </widget>
    </widget>
   </widget>
-  <action name="actionBrowseAction">
+  <action name="actionBrowse">
    <property name="text">
-    <string>BrowseAction</string>
-   </property>
-  </action>
-  <action name="actionConvertAction">
-   <property name="text">
-    <string>ConvertAction</string>
-   </property>
-  </action>
-  <action name="actionTableCellChangedAction">
-   <property name="text">
-    <string>TableCellChangedAction</string>
+    <string>Browse</string>
    </property>
    <property name="toolTip">
-    <string>TableCellChangedAction</string>
+    <string>Browse</string>
    </property>
   </action>
-  <action name="actionTableResizeAction">
+  <action name="actionConvert">
    <property name="text">
-    <string>TableResizeAction</string>
+    <string>Convert</string>
+   </property>
+   <property name="toolTip">
+    <string>Convert</string>
    </property>
   </action>
-  <action name="actionDelAction">
+  <action name="actionTableCellChanged">
    <property name="text">
-    <string>DelAction</string>
+    <string>TableCellChanged</string>
+   </property>
+   <property name="toolTip">
+    <string>TableCellChanged</string>
    </property>
   </action>
-  <action name="actionPulseChangedAction">
+  <action name="actionTableResize">
    <property name="text">
-    <string>PulseChangedAction</string>
+    <string>TableResize</string>
+   </property>
+   <property name="toolTip">
+    <string>TableResize</string>
    </property>
   </action>
-  <action name="actionPointSizeChangedAction">
+  <action name="actionDel">
    <property name="text">
-    <string>PointSizeChangedAction</string>
+    <string>Del</string>
+   </property>
+   <property name="toolTip">
+    <string>Del</string>
    </property>
   </action>
-  <action name="actionCheckBoxGenerateAction">
+  <action name="actionPulseChanged">
    <property name="text">
-    <string>CheckBoxGenerateAction</string>
+    <string>PulseChanged</string>
+   </property>
+   <property name="toolTip">
+    <string>PulseChanged</string>
    </property>
   </action>
-  <action name="actionClockZeroOneStopSpinBoxChangedAction">
+  <action name="actionPointSizeChanged">
    <property name="text">
-    <string>ClockZeroOneStopSpinBoxChangedAction</string>
+    <string>PointSizeChanged</string>
+   </property>
+   <property name="toolTip">
+    <string>PointSizeChanged</string>
    </property>
   </action>
-  <action name="actionClearAction">
+  <action name="actionCheckBoxGenerate">
    <property name="text">
-    <string>ClearAction</string>
+    <string>CheckBoxGenerate</string>
+   </property>
+   <property name="toolTip">
+    <string>CheckBoxGenerate</string>
+   </property>
+  </action>
+  <action name="actionClockZeroOneStopSpinBoxChanged">
+   <property name="text">
+    <string>ClockZeroOneStopSpinBoxChanged</string>
+   </property>
+   <property name="toolTip">
+    <string>ClockZeroOneStopSpinBoxChanged</string>
+   </property>
+  </action>
+  <action name="actionClear">
+   <property name="text">
+    <string>Clear</string>
+   </property>
+   <property name="toolTip">
+    <string>Clear</string>
    </property>
   </action>
  </widget>
@@ -672,7 +699,7 @@
   <connection>
    <sender>pushButton_Browse</sender>
    <signal>clicked()</signal>
-   <receiver>actionBrowseAction</receiver>
+   <receiver>actionBrowse</receiver>
    <slot>trigger()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -688,7 +715,7 @@
   <connection>
    <sender>pushButton_Convert</sender>
    <signal>clicked()</signal>
-   <receiver>actionConvertAction</receiver>
+   <receiver>actionConvert</receiver>
    <slot>trigger()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -704,7 +731,7 @@
   <connection>
    <sender>spinBox_Height</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>actionTableResizeAction</receiver>
+   <receiver>actionTableResize</receiver>
    <slot>trigger()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -720,7 +747,7 @@
   <connection>
    <sender>spinBox_Width</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>actionTableResizeAction</receiver>
+   <receiver>actionTableResize</receiver>
    <slot>trigger()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -736,7 +763,7 @@
   <connection>
    <sender>pushButton_Del</sender>
    <signal>clicked()</signal>
-   <receiver>actionDelAction</receiver>
+   <receiver>actionDel</receiver>
    <slot>trigger()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -752,7 +779,7 @@
   <connection>
    <sender>spinBox_Pulse</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>actionPulseChangedAction</receiver>
+   <receiver>actionPulseChanged</receiver>
    <slot>trigger()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -768,7 +795,7 @@
   <connection>
    <sender>tableWidget</sender>
    <signal>currentCellChanged(int,int,int,int)</signal>
-   <receiver>actionTableCellChangedAction</receiver>
+   <receiver>actionTableCellChanged</receiver>
    <slot>trigger()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -784,7 +811,7 @@
   <connection>
    <sender>spinBox_Point_Size</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>actionPointSizeChangedAction</receiver>
+   <receiver>actionPointSizeChanged</receiver>
    <slot>trigger()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -800,7 +827,7 @@
   <connection>
    <sender>checkBox_Bin</sender>
    <signal>stateChanged(int)</signal>
-   <receiver>actionCheckBoxGenerateAction</receiver>
+   <receiver>actionCheckBoxGenerate</receiver>
    <slot>trigger()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -816,7 +843,7 @@
   <connection>
    <sender>checkBox_CH</sender>
    <signal>stateChanged(int)</signal>
-   <receiver>actionCheckBoxGenerateAction</receiver>
+   <receiver>actionCheckBoxGenerate</receiver>
    <slot>trigger()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -832,7 +859,7 @@
   <connection>
    <sender>spinBox_Clock_Divider</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>actionClockZeroOneStopSpinBoxChangedAction</receiver>
+   <receiver>actionClockZeroOneStopSpinBoxChanged</receiver>
    <slot>trigger()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -848,7 +875,7 @@
   <connection>
    <sender>spinBox_Zero</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>actionClockZeroOneStopSpinBoxChangedAction</receiver>
+   <receiver>actionClockZeroOneStopSpinBoxChanged</receiver>
    <slot>trigger()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -864,7 +891,7 @@
   <connection>
    <sender>spinBox_One</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>actionClockZeroOneStopSpinBoxChangedAction</receiver>
+   <receiver>actionClockZeroOneStopSpinBoxChanged</receiver>
    <slot>trigger()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -880,7 +907,7 @@
   <connection>
    <sender>spinBox_Stop_Pulses</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>actionClockZeroOneStopSpinBoxChangedAction</receiver>
+   <receiver>actionClockZeroOneStopSpinBoxChanged</receiver>
    <slot>trigger()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -896,7 +923,7 @@
   <connection>
    <sender>comboBox_Scan_Direction</sender>
    <signal>currentIndexChanged(int)</signal>
-   <receiver>actionClockZeroOneStopSpinBoxChangedAction</receiver>
+   <receiver>actionClockZeroOneStopSpinBoxChanged</receiver>
    <slot>trigger()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -912,7 +939,7 @@
   <connection>
    <sender>pushButton_Clear</sender>
    <signal>clicked()</signal>
-   <receiver>actionClearAction</receiver>
+   <receiver>actionClear</receiver>
    <slot>trigger()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -928,7 +955,7 @@
   <connection>
    <sender>comboBox_Byte_Order</sender>
    <signal>currentIndexChanged(int)</signal>
-   <receiver>actionClockZeroOneStopSpinBoxChangedAction</receiver>
+   <receiver>actionClockZeroOneStopSpinBoxChanged</receiver>
    <slot>trigger()</slot>
    <hints>
     <hint type="sourcelabel">

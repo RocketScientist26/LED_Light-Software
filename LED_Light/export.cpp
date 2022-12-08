@@ -1,7 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QFile>
-#include <QFileInfo>
 
 uint8_t MainWindow::Export_Reverse_Bits(uint8_t b){
     b = (b & 0xF0) >> 4 | (b & 0x0F) << 4;
@@ -423,7 +421,7 @@ void MainWindow::Export_Bin(QString *file_dir, const QByteArray &data){
             bdata.append((uint8_t)0);
         }
         //[CRC 4]
-        tmp = CRC32_Get((uint32_t *)&bdata.data()[0], bdata.length() / 4);
+        tmp = Crc32((uint32_t *)&bdata.data()[0], bdata.length() / 4).getCrc();
         bdata.append((const char *)&tmp, 4);
 
         //Save file

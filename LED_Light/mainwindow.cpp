@@ -1,30 +1,61 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QFileDialog>
-#include <QImage>
-#include <QVideoFrame>
 
 //Init
 MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow){
     this->setFixedSize(849, 561);
     ui->setupUi(this);
 
-    //Settings
-    Settings_Init();
+    //Config
+    config = new Config(
+        this,
+        Config::config_t{
+            .images_width = ui->spinBox_Width->value(),
+            .images_height = ui->spinBox_Height->value(),
+            .images_dir = "",
+            .mask_point_size = ui->spinBox_Point_Size->value(),
+            .mask_scan_direction = ui->comboBox_Scan_Direction->currentIndex(),
+            .output_clock_divider = ui->spinBox_Clock_Divider->value(),
+            .output_pulse = ui->spinBox_Pulse->value(),
+            .output_zero = ui->spinBox_Zero->value(),
+            .output_one = ui->spinBox_One->value(),
+            .output_stop_pulses = ui->spinBox_Stop_Pulses->value(),
+            .output_ch = ui->checkBox_CH->isChecked(),
+            .output_bin = ui->checkBox_Bin->isChecked(),
+            .output_byte_order = ui->comboBox_Byte_Order->currentIndex(),
+            .output_dir = ""
+        }
+    );
+    //Apply config to UI
+    ui->spinBox_Width->setValue(config->get().images_width);
+    ui->spinBox_Height->setValue(config->get().images_height);
+    ui->spinBox_Point_Size->setValue(config->get().mask_point_size);
+    ui->comboBox_Scan_Direction->setCurrentIndex(config->get().mask_scan_direction);
+    ui->spinBox_Clock_Divider->setValue(config->get().output_clock_divider);
+    ui->spinBox_Pulse->setValue(config->get().output_pulse);
+    ui->spinBox_Zero->setValue(config->get().output_zero);
+    ui->spinBox_One->setValue(config->get().output_one);
+    ui->spinBox_Stop_Pulses->setValue(config->get().output_stop_pulses);
+    ui->checkBox_CH->setChecked(config->get().output_ch);
+    ui->checkBox_Bin->setChecked(config->get().output_bin);
+    ui->comboBox_Byte_Order->setCurrentIndex(config->get().output_byte_order);
+
     //Setup table
-    on_actionTableResizeAction_triggered();
+    on_actionTableResize_triggered();
 }
 MainWindow::~MainWindow(){
     delete ui;
 }
 
 //Convert
-void MainWindow::on_actionConvertAction_triggered(){
+void MainWindow::on_actionConvert_triggered(){
     //Export
-    QString file_dir = QFileDialog::getExistingDirectory(this, tr("Choose directory"), settings_output_dir, QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+    QString file_dir = QFileDialog::getExistingDirectory(this, tr("Choose directory"), config->get().output_dir, QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
     if(file_dir.length() > 0){
-        settings_output_dir = file_dir;
-        Settings_Store();
+        Config::config_t _config = config->get();
+        _config.output_dir = file_dir;
+        config->save(_config);
+
         if(ui->checkBox_CH->isChecked()){
             Export_CH(&file_dir, Export_Data());
         }
@@ -35,12 +66,13 @@ void MainWindow::on_actionConvertAction_triggered(){
 }
 
 //Add remove images
-void MainWindow::on_actionBrowseAction_triggered(){
-    QStringList file_names = QFileDialog::getOpenFileNames(this, QString("Browse for ").append(QString::number(ui->spinBox_Width->value())).append("x").append(QString::number(ui->spinBox_Height->value())).append(" pixels image files"), settings_images_dir, "Image files (*.bmp *.gif *.jpeg *.jpg *.png)");
+void MainWindow::on_actionBrowse_triggered(){
+    QStringList file_names = QFileDialog::getOpenFileNames(this, QString("Browse for ").append(QString::number(ui->spinBox_Width->value())).append("x").append(QString::number(ui->spinBox_Height->value())).append(" pixels image files"), config->get().images_dir, "Image files (*.bmp *.gif *.jpeg *.jpg *.png)");
     file_names.sort(Qt::CaseInsensitive);
     if(file_names.length()){
-        settings_images_dir = file_names.at(0).chopped(file_names.at(0).length() - file_names.at(0).lastIndexOf('/'));
-        Settings_Store();
+        Config::config_t _config = config->get();
+        _config.images_dir = file_names.at(0).chopped(file_names.at(0).length() - file_names.at(0).lastIndexOf('/'));
+        config->save(_config);
     }
     int i = 0;
     while((i != file_names.length()) && (ui->listWidget->count() < MAX_IMAGE_COUNT)){
@@ -72,7 +104,7 @@ void MainWindow::on_actionBrowseAction_triggered(){
     }
     UIEnableConditional();
 }
-void MainWindow::on_actionDelAction_triggered(){
+void MainWindow::on_actionDel_triggered(){
     if(ui->listWidget->count()){
         QListWidgetItem *item;
         item = ui->listWidget->takeItem(ui->listWidget->count() - 1);
@@ -83,7 +115,7 @@ void MainWindow::on_actionDelAction_triggered(){
     }
     UIEnableConditional();
 }
-void MainWindow::on_actionClearAction_triggered(){
+void MainWindow::on_actionClear_triggered(){
     int i = ui->listWidget->count();
     while(i != 0){
         i--;
@@ -118,7 +150,7 @@ void MainWindow::UIEnableConditional(){
         ui->pushButton_Clear->setEnabled(true);
     }
 }
-void MainWindow::on_actionTableCellChangedAction_triggered(){
+void MainWindow::on_actionTableCellChanged_triggered(){
     if(ui->tableWidget->currentItem()){
         if(ui->tableWidget->currentItem()->background().color() == table_normal_color){
             ui->tableWidget->currentItem()->setBackground(QBrush(table_selected_color));
@@ -143,7 +175,7 @@ void MainWindow::on_actionTableCellChangedAction_triggered(){
         }
     }
 }
-void MainWindow::on_actionTableResizeAction_triggered(){
+void MainWindow::on_actionTableResize_triggered(){
     //Setup table
     ui->tableWidget->clear();
     ui->tableWidget->setRowCount(0);
@@ -166,22 +198,43 @@ void MainWindow::on_actionTableResizeAction_triggered(){
     }
     ui->listWidget->clear();
     UIEnableConditional();
-    Settings_Store();
+
+    Config::config_t _config = config->get();
+    _config.images_width = ui->spinBox_Width->value();
+    _config.images_height = ui->spinBox_Height->value();
+    config->save(_config);
 }
-void MainWindow::on_actionPulseChangedAction_triggered(){
+void MainWindow::on_actionPulseChanged_triggered(){
     ui->spinBox_One->setMaximum(ui->spinBox_Pulse->value());
     ui->spinBox_Zero->setMaximum(ui->spinBox_Pulse->value());
-    Settings_Store();
+
+    Config::config_t _config = config->get();
+    _config.output_pulse = ui->spinBox_Pulse->value();
+    config->save(_config);
 }
-void MainWindow::on_actionPointSizeChangedAction_triggered(){
+void MainWindow::on_actionPointSizeChanged_triggered(){
     ui->tableWidget->horizontalHeader()->setDefaultSectionSize(ui->spinBox_Point_Size->value());
     ui->tableWidget->verticalHeader()->setDefaultSectionSize(ui->spinBox_Point_Size->value());
-    Settings_Store();
+
+    Config::config_t _config = config->get();
+    _config.mask_point_size = ui->spinBox_Point_Size->value();
+    config->save(_config);
 }
-void MainWindow::on_actionCheckBoxGenerateAction_triggered(){
+void MainWindow::on_actionCheckBoxGenerate_triggered(){
     UIEnableConditional();
-    Settings_Store();
+
+    Config::config_t _config = config->get();
+    _config.output_bin = ui->checkBox_Bin->isChecked();
+    _config.output_ch = ui->checkBox_CH->isChecked();
+    config->save(_config);
 }
-void MainWindow::on_actionClockZeroOneStopSpinBoxChangedAction_triggered(){
-    Settings_Store();
+void MainWindow::on_actionClockZeroOneStopSpinBoxChanged_triggered(){
+    Config::config_t _config = config->get();
+    _config.output_zero = ui->spinBox_Zero->value();
+    _config.output_one = ui->spinBox_One->value();
+    _config.output_stop_pulses = ui->spinBox_Stop_Pulses->value();
+    _config.output_clock_divider = ui->spinBox_Clock_Divider->value();
+    _config.output_byte_order = ui->comboBox_Byte_Order->currentIndex();
+    _config.mask_scan_direction = ui->comboBox_Scan_Direction->currentIndex();
+    config->save(_config);
 }
