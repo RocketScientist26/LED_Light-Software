@@ -1,3 +1,8 @@
+//! Class for storing UI configuration on every user action
+/*!
+    Creates file "config.ini" in programs root folder and stores/reads
+    various program configuration values in/from it.
+*/
 #ifndef CONFIG_H
 #define CONFIG_H
 

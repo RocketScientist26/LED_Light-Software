@@ -17,6 +17,7 @@ SOURCES += \
 HEADERS += \
     config.h \
     crc32.h \
+    export.h \
     mainwindow.h
 
 FORMS += \

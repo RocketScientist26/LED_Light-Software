@@ -1,3 +1,4 @@
+//! Class for generating STM32 compatible 32bit CRC
 #ifndef CRC32_H
 #define CRC32_H
 
@@ -11,6 +12,7 @@ class Crc32 : public QObject
         uint32_t getCrc();
 
     private:
+        //Variable where we store generated CRC from "*data"
         uint32_t crc;
 };
 

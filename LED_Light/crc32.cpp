@@ -1,5 +1,9 @@
 #include "crc32.h"
 
+/*!
+    Constructor function, generates CRC for "*data" with given length
+    and stores it in "crc" private variable
+*/
 Crc32::Crc32(uint32_t *data, uint32_t length)
 {
     crc = 0xFFFFFFFF;
@@ -22,6 +26,7 @@ Crc32::Crc32(uint32_t *data, uint32_t length)
     }
 }
 
+//! Returns generated CRC
 uint32_t Crc32::getCrc()
 {
     return crc;

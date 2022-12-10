@@ -1,5 +1,10 @@
 #include "config.h"
 
+/*!
+    Constructor function, creates empty "config.ini" file in
+    programs root directory if it does not already exists.
+    Reads values from "config.ini" or reads as default values.
+*/
 Config::Config(QObject *parent, config_t def_vals) : QObject{ parent }
 {
     //Create empty file if does not exist
@@ -15,6 +20,7 @@ Config::Config(QObject *parent, config_t def_vals) : QObject{ parent }
     read();
 }
 
+//! Reads "config.ini" from disc to variables
 void Config::read()
 {
     settings->beginGroup("IMAGES");
@@ -40,12 +46,12 @@ void Config::read()
     _config.output_dir = settings->value("dir", _def_vals.output_dir).toString();
     settings->endGroup();
 }
-
+//! Returns all configuration variables as "config_t" struct
 Config::config_t Config::get()
 {
     return _config;
 }
-
+//! Stores all variables from "config_t" struct to "config.ini"
 void Config::save(config_t config)
 {
     _config = config;
